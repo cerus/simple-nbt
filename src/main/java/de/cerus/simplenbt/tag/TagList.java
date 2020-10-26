@@ -2,7 +2,11 @@ package de.cerus.simplenbt.tag;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class TagList extends Tag<List<Tag<?>>> {
 
@@ -30,6 +34,22 @@ public class TagList extends Tag<List<Tag<?>>> {
         // for(size) {
         //     list.add(TagReader.read(listTagId, in))
         // }
+
+        // Read tag id
+        final int listTagId = inputStream.read();
+
+        // Read size
+        final byte[] arr = new byte[4];
+        inputStream.read(arr, 0, 4);
+        final int size = ByteBuffer.wrap(arr).order(ByteOrder.BIG_ENDIAN).getInt();
+
+        // Read tags
+        final List<Tag<?>> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            final Optional<? extends Tag<?>> optional = TagReader.readNextTag(inputStream, false, listTagId);
+            optional.ifPresent(list::add);
+        }
+        this.value = list;
     }
 
     @Override

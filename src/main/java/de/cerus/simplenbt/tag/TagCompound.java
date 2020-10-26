@@ -2,6 +2,7 @@ package de.cerus.simplenbt.tag;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TagCompound extends Tag<List<Tag<?>>> {
@@ -31,6 +32,13 @@ public class TagCompound extends Tag<List<Tag<?>>> {
         //     list.add(tag);
         // }
         // Tag<?>[] arr = list.toArray(new Tag<?>[0]);
+
+        final List<Tag<?>> list = new ArrayList<>();
+        Tag<?> tag;
+        while (!((tag = TagReader.readNextTag(inputStream, true).orElse(null)) instanceof TagEnd)) {
+            list.add(tag);
+        }
+        this.value = list;
     }
 
     @Override
