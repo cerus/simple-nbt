@@ -33,6 +33,10 @@ public class TagCompound extends Tag<List<Tag<?>>> {
         // }
         // Tag<?>[] arr = list.toArray(new Tag<?>[0]);
 
+        if (parseName) {
+            this.name = this.readName(inputStream);
+        }
+
         final List<Tag<?>> list = new ArrayList<>();
         Tag<?> tag;
         while (!((tag = TagReader.readNextTag(inputStream, true).orElse(null)) instanceof TagEnd)) {
