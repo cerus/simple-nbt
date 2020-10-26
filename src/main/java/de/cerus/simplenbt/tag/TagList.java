@@ -28,16 +28,6 @@ public class TagList extends Tag<List<Tag<?>>> {
             this.name = this.readName(inputStream);
         }
 
-        // TODO
-        // Pseudo-code:
-        // InputStream in = ...
-        // byte listTagId = in.read();
-        // int size = int(in);
-        // List<Tag<?>> list = ...
-        // for(size) {
-        //     list.add(TagReader.read(listTagId, in))
-        // }
-
         // Read tag id
         this.tagId = inputStream.read();
 
