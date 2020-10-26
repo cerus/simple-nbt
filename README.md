@@ -21,7 +21,7 @@ You can add simple-nbt to your project with Maven using Jitpack.io:
     <dependency>
         <groupId>com.github.cerus</groupId>
         <artifactId>simple-nbt</artifactId>
-        <version>v1.0.0</version>
+        <version>v1.1.0</version>
     </dependency>
 </dependencies>
 ```
