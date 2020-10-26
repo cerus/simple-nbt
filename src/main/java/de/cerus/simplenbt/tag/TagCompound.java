@@ -33,6 +33,18 @@ public class TagCompound extends Tag<List<Tag<?>>> {
         this.value = list;
     }
 
+    public <T extends Tag<?>> T get(final String key) {
+        return this.value.stream()
+                .filter(tag -> key.equals(tag.name))
+                .map(tag -> (T) tag)
+                .findAny()
+                .orElse(null);
+    }
+
+    public boolean contains(final String key) {
+        return this.get(key) != null;
+    }
+
     @Override
     public int getId() {
         return 10;
