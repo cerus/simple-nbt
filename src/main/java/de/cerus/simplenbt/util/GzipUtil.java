@@ -27,9 +27,12 @@ public class GzipUtil {
     }
 
     public static byte[] compress(final byte[] bytes) throws IOException {
+        return compress(new ByteArrayInputStream(bytes));
+    }
+
+    public static byte[] compress(final InputStream inputStream) throws IOException {
         final ByteArrayOutputStream bOut = new ByteArrayOutputStream();
         final GZIPOutputStream outputStream = new GZIPOutputStream(bOut);
-        final ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes);
 
         final byte[] buffer = new byte[1024];
         int len;
