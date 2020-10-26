@@ -19,6 +19,10 @@ public class SimpleNbtUtil {
         return readCompound(new ByteArrayInputStream(GzipUtil.decompress(inputStream)));
     }
 
+    public static TagCompound readFile(final File file) throws IOException {
+        return readCompound(new FileInputStream(file));
+    }
+
     public static TagCompound readCompressedFile(final File file) throws IOException {
         return readCompressedCompound(new FileInputStream(file));
     }
@@ -43,7 +47,7 @@ public class SimpleNbtUtil {
     }
 
     public static void writeTag(final Tag<?> tag, final OutputStream outputStream) throws IOException {
-        tag.write(outputStream, !(tag instanceof TagCompound));
+        tag.write(outputStream, true);
     }
 
     public static void writeTag(final Tag<?> tag, final File file) throws IOException {

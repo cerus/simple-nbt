@@ -10,7 +10,7 @@ public class TagByte extends Tag<Byte> {
         super(inputStream, parseName);
     }
 
-    protected TagByte(final String name, final byte value) {
+    public TagByte(final String name, final byte value) {
         super(name, value);
     }
 

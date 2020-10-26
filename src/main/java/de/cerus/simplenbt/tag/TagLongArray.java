@@ -12,7 +12,7 @@ public class TagLongArray extends Tag<long[]> {
         super(inputStream, parseName);
     }
 
-    protected TagLongArray(final String name, final long[] value) {
+    public TagLongArray(final String name, final long[] value) {
         super(name, value);
     }
 

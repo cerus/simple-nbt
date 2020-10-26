@@ -12,7 +12,7 @@ public class TagLong extends Tag<Long> {
         super(inputStream, parseName);
     }
 
-    protected TagLong(final String name, final long value) {
+    public TagLong(final String name, final long value) {
         super(name, value);
     }
 

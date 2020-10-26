@@ -12,7 +12,7 @@ public class TagInt extends Tag<Integer> {
         super(inputStream, parseName);
     }
 
-    protected TagInt(final String name, final int value) {
+    public TagInt(final String name, final int value) {
         super(name, value);
     }
 

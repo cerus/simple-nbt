@@ -12,8 +12,12 @@ public class TagCompound extends Tag<List<Tag<?>>> {
         super(inputStream, parseName);
     }
 
-    protected TagCompound(final String name, final List<Tag<?>> value) {
+    public TagCompound(final String name, final List<Tag<?>> value) {
         super(name, value);
+    }
+
+    public static TagCompound createRootTag() {
+        return new TagCompound("", new ArrayList<>());
     }
 
     @Override
@@ -28,7 +32,7 @@ public class TagCompound extends Tag<List<Tag<?>>> {
 
         final List<Tag<?>> list = new ArrayList<>();
         Tag<?> tag;
-        while (!((tag = TagReader.readNextTag(inputStream, true).orElse(null)) instanceof TagEnd)) {
+        while (!((tag = TagReader.readNextTag(inputStream, true).orElse(null)) instanceof TagEnd) && tag != null) {
             list.add(tag);
         }
         this.value = list;
@@ -40,8 +44,16 @@ public class TagCompound extends Tag<List<Tag<?>>> {
 
         for (final Tag<?> tag : this.value) {
             tag.write(outputStream, true);
+            System.out.println(tag.name + " was written");
         }
         new TagEnd().write(outputStream, false);
+    }
+
+    public void set(final Tag<?> tag) {
+        if (this.contains(tag.name)) {
+            this.value.remove(this.get(tag.name));
+        }
+        this.value.add(tag);
     }
 
     public <T extends Tag<?>> T get(final String key) {

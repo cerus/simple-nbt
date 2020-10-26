@@ -12,7 +12,7 @@ public class TagByteArray extends Tag<byte[]> {
         super(inputStream, parseName);
     }
 
-    protected TagByteArray(final String name, final byte[] value) {
+    public TagByteArray(final String name, final byte[] value) {
         super(name, value);
     }
 

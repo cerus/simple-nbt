@@ -17,7 +17,7 @@ public class TagList extends Tag<List<Tag<?>>> {
         super(inputStream, parseName);
     }
 
-    protected TagList(final String name, final List<Tag<?>> value, final int tagId) {
+    public TagList(final String name, final List<Tag<?>> value, final int tagId) {
         super(name, value);
         this.tagId = tagId;
     }

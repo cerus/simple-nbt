@@ -13,7 +13,7 @@ public class TagString extends Tag<String> {
         super(inputStream, parseName);
     }
 
-    protected TagString(final String name, final String value) {
+    public TagString(final String name, final String value) {
         super(name, value);
     }
 

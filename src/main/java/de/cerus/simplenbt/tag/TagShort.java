@@ -12,7 +12,7 @@ public class TagShort extends Tag<Short> {
         super(inputStream, parseName);
     }
 
-    protected TagShort(final String name, final short value) {
+    public TagShort(final String name, final short value) {
         super(name, value);
     }
 

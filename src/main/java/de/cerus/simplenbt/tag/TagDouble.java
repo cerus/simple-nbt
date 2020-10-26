@@ -12,7 +12,7 @@ public class TagDouble extends Tag<Double> {
         super(inputStream, parseName);
     }
 
-    protected TagDouble(final String name, final double value) {
+    public TagDouble(final String name, final double value) {
         super(name, value);
     }
 

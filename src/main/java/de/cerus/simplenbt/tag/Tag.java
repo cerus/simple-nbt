@@ -16,7 +16,7 @@ public abstract class Tag<T> {
         this.read(inputStream, parseName);
     }
 
-    protected Tag(final String name, final T value) {
+    public Tag(final String name, final T value) {
         this.name = name;
         this.value = value;
     }

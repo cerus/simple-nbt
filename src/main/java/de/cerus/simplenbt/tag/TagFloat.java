@@ -12,7 +12,7 @@ public class TagFloat extends Tag<Float> {
         super(inputStream, parseName);
     }
 
-    protected TagFloat(final String name, final float value) {
+    public TagFloat(final String name, final float value) {
         super(name, value);
     }
 

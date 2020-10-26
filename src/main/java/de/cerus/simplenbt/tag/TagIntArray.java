@@ -12,7 +12,7 @@ public class TagIntArray extends Tag<int[]> {
         super(inputStream, parseName);
     }
 
-    protected TagIntArray(final String name, final int[] value) {
+    public TagIntArray(final String name, final int[] value) {
         super(name, value);
     }
 

@@ -10,11 +10,15 @@ import java.io.OutputStream;
  */
 public class TagEnd extends Tag<Void> {
 
-    TagEnd() throws IOException {
+    TagEnd(final InputStream inputStream, final boolean parseName) throws IOException {
+        super(inputStream, parseName);
+    }
+
+    public TagEnd() throws IOException {
         super(new ByteArrayInputStream(new byte[0]), false);
     }
 
-    protected TagEnd(final String name, final Void value) {
+    TagEnd(final String name, final Void value) {
         super(name, value);
     }
 
