@@ -10,12 +10,15 @@ import java.util.Optional;
 
 public class TagList extends Tag<List<Tag<?>>> {
 
+    private int tagId;
+
     TagList(final InputStream inputStream, final boolean parseName) throws IOException {
         super(inputStream, parseName);
     }
 
-    protected TagList(final String name, final List<Tag<?>> value) {
+    protected TagList(final String name, final List<Tag<?>> value, final int tagId) {
         super(name, value);
+        this.tagId = tagId;
     }
 
     @Override
@@ -36,7 +39,7 @@ public class TagList extends Tag<List<Tag<?>>> {
         // }
 
         // Read tag id
-        final int listTagId = inputStream.read();
+        this.tagId = inputStream.read();
 
         // Read size
         final byte[] arr = new byte[4];
@@ -46,7 +49,7 @@ public class TagList extends Tag<List<Tag<?>>> {
         // Read tags
         final List<Tag<?>> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            final Optional<? extends Tag<?>> optional = TagReader.readNextTag(inputStream, false, listTagId);
+            final Optional<? extends Tag<?>> optional = TagReader.readNextTag(inputStream, false, this.tagId);
             optional.ifPresent(list::add);
         }
         this.value = list;
@@ -57,4 +60,7 @@ public class TagList extends Tag<List<Tag<?>>> {
         return 9;
     }
 
+    public int getTagId() {
+        return this.tagId;
+    }
 }
