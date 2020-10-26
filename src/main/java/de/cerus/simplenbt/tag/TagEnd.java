@@ -24,6 +24,7 @@ public class TagEnd extends Tag<Void> {
 
     @Override
     protected void write(final OutputStream outputStream, final boolean withName) throws IOException {
+        super.write(outputStream, withName);
     }
 
     @Override
