@@ -6,6 +6,10 @@ public class TagByte extends Tag<Byte> {
         super(name, value);
     }
 
+    public boolean asBoolean() {
+        return this.getValue() == (byte) 1;
+    }
+
     @Override
     public int getId() {
         return 1;
