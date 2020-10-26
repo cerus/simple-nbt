@@ -2,6 +2,7 @@ package de.cerus.simplenbt.tag;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 public class TagByte extends Tag<Byte> {
 
@@ -22,6 +23,12 @@ public class TagByte extends Tag<Byte> {
 
         // Get value
         this.value = (byte) inputStream.read();
+    }
+
+    @Override
+    protected void write(final OutputStream outputStream, final boolean withName) throws IOException {
+        super.write(outputStream, withName);
+        outputStream.write(this.value);
     }
 
     public boolean asBoolean() {

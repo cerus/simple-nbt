@@ -2,6 +2,7 @@ package de.cerus.simplenbt.tag;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
@@ -32,6 +33,14 @@ public class TagString extends Tag<String> {
         final byte[] stringArr = new byte[stringLen];
         inputStream.read(stringArr, 0, stringLen);
         this.value = new String(stringArr, StandardCharsets.UTF_8);
+    }
+
+    @Override
+    protected void write(final OutputStream outputStream, final boolean withName) throws IOException {
+        super.write(outputStream, withName);
+
+        outputStream.write(ByteBuffer.allocate(2).order(ByteOrder.BIG_ENDIAN).putShort((short) this.value.length()).array());
+        outputStream.write(this.value.getBytes(StandardCharsets.UTF_8));
     }
 
     @Override

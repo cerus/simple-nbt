@@ -2,6 +2,7 @@ package de.cerus.simplenbt.tag;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
@@ -31,6 +32,13 @@ public class TagByteArray extends Tag<byte[]> {
         final byte[] bytes = new byte[size];
         inputStream.read(bytes, 0, size);
         this.value = bytes;
+    }
+
+    @Override
+    protected void write(final OutputStream outputStream, final boolean withName) throws IOException {
+        super.write(outputStream, withName);
+        outputStream.write(ByteBuffer.allocate(4).putInt(this.value.length).array());
+        outputStream.write(this.value);
     }
 
     @Override

@@ -2,6 +2,7 @@ package de.cerus.simplenbt.tag;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -43,6 +44,16 @@ public class TagList extends Tag<List<Tag<?>>> {
             optional.ifPresent(list::add);
         }
         this.value = list;
+    }
+
+    @Override
+    protected void write(final OutputStream outputStream, final boolean withName) throws IOException {
+        super.write(outputStream, withName);
+
+        outputStream.write(ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN).putInt(this.value.size()).array());
+        for (final Tag<?> tag : this.value) {
+            tag.write(outputStream, false);
+        }
     }
 
     @Override

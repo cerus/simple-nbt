@@ -2,6 +2,7 @@ package de.cerus.simplenbt.tag;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
@@ -35,6 +36,17 @@ public class TagLongArray extends Tag<long[]> {
             longs[i] = ByteBuffer.wrap(arr).order(ByteOrder.BIG_ENDIAN).getLong();
         }
         this.value = longs;
+    }
+
+    @Override
+    protected void write(final OutputStream outputStream, final boolean withName) throws IOException {
+        super.write(outputStream, withName);
+
+        outputStream.write(ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN).putInt(this.value.length).array());
+        final ByteBuffer byteBuffer = ByteBuffer.allocate(this.value.length * 8).order(ByteOrder.BIG_ENDIAN);
+        for (final long l : this.value) {
+            byteBuffer.putLong(l);
+        }
     }
 
     @Override
