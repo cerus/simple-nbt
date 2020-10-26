@@ -18,4 +18,6 @@ public abstract class Tag<T> {
         return this.value;
     }
 
+    public abstract int getId();
+
 }

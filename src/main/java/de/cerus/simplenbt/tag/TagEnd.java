@@ -9,4 +9,9 @@ public class TagEnd extends Tag<Void> {
         super(name, value);
     }
 
+    @Override
+    public int getId() {
+        return 0;
+    }
+
 }
