@@ -7,9 +7,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class NbtUtil {
+public class SimpleNbtUtil {
 
-    private NbtUtil() {
+    private SimpleNbtUtil() {
     }
 
     public static TagCompound readCompressedCompound(final InputStream inputStream) throws IOException {
@@ -23,7 +23,7 @@ public class NbtUtil {
     public static TagCompound readCompound(final InputStream inputStream) throws IOException {
         final int id = inputStream.read();
         if (id != 10) {
-            throw new IllegalStateException();
+            throw new IllegalStateException("Invalid id");
         }
 
         return new TagCompound(inputStream, true);
