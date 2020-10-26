@@ -7,8 +7,8 @@ import java.nio.ByteOrder;
 
 public class TagInt extends Tag<Integer> {
 
-    TagInt(final InputStream inputStream) throws IOException {
-        super(inputStream);
+    TagInt(final InputStream inputStream, final boolean parseName) throws IOException {
+        super(inputStream, parseName);
     }
 
     protected TagInt(final String name, final int value) {
@@ -16,14 +16,11 @@ public class TagInt extends Tag<Integer> {
     }
 
     @Override
-    protected void read(final InputStream inputStream) throws IOException {
-        if (!this.checkId(inputStream)) {
-            // Id does not match
-            // TODO
+    protected void read(final InputStream inputStream, final boolean parseName) throws IOException {
+        if (parseName) {
+            // Get name
+            this.name = this.readName(inputStream);
         }
-
-        // Get name
-        this.name = this.readName(inputStream);
 
         // Get value
         final byte[] arr = new byte[4];

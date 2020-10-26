@@ -11,8 +11,8 @@ public abstract class Tag<T> {
     protected String name;
     protected T value;
 
-    Tag(final InputStream inputStream) throws IOException {
-        this.read(inputStream);
+    Tag(final InputStream inputStream, final boolean parseName) throws IOException {
+        this.read(inputStream, parseName);
     }
 
     protected Tag(final String name, final T value) {
@@ -20,11 +20,7 @@ public abstract class Tag<T> {
         this.value = value;
     }
 
-    protected abstract void read(InputStream inputStream) throws IOException;
-
-    protected boolean checkId(final InputStream inputStream) throws IOException {
-        return inputStream.read() == this.getId();
-    }
+    protected abstract void read(InputStream inputStream, boolean parseName) throws IOException;
 
     protected String readName(final InputStream inputStream) throws IOException {
         // Get length of name

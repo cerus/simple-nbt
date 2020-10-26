@@ -5,8 +5,8 @@ import java.io.InputStream;
 
 public class TagCompound extends Tag<Tag<?>[]> {
 
-    TagCompound(final InputStream inputStream) throws IOException {
-        super(inputStream);
+    TagCompound(final InputStream inputStream, final boolean parseName) throws IOException {
+        super(inputStream, parseName);
     }
 
     protected TagCompound(final String name, final Tag<?>[] value) {
@@ -14,7 +14,7 @@ public class TagCompound extends Tag<Tag<?>[]> {
     }
 
     @Override
-    protected void read(final InputStream inputStream) throws IOException {
+    protected void read(final InputStream inputStream, final boolean parseName) throws IOException {
         // TODO
         //
         // Problem is that we don't know the size of the compound beforehand, at least the

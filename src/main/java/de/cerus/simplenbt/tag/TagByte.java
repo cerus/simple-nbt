@@ -5,8 +5,8 @@ import java.io.InputStream;
 
 public class TagByte extends Tag<Byte> {
 
-    TagByte(final InputStream inputStream) throws IOException {
-        super(inputStream);
+    TagByte(final InputStream inputStream, final boolean parseName) throws IOException {
+        super(inputStream, parseName);
     }
 
     protected TagByte(final String name, final byte value) {
@@ -14,14 +14,12 @@ public class TagByte extends Tag<Byte> {
     }
 
     @Override
-    protected void read(final InputStream inputStream) throws IOException {
-        if (!this.checkId(inputStream)) {
-            // Id does not match
-            // TODO
+    protected void read(final InputStream inputStream, final boolean parseName) throws IOException {
+        if (parseName) {
+            // Get name
+            this.name = this.readName(inputStream);
         }
 
-        // Get name
-        this.name = this.readName(inputStream);
         // Get value
         this.value = (byte) inputStream.read();
     }

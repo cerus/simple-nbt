@@ -8,8 +8,8 @@ import java.io.InputStream;
  */
 public class TagEnd extends Tag<Void> {
 
-    TagEnd(final InputStream inputStream) throws IOException {
-        super(inputStream);
+    TagEnd(final InputStream inputStream, final boolean parseName) throws IOException {
+        super(inputStream, parseName);
     }
 
     protected TagEnd(final String name, final Void value) {
@@ -17,11 +17,7 @@ public class TagEnd extends Tag<Void> {
     }
 
     @Override
-    protected void read(final InputStream inputStream) throws IOException {
-        if (!this.checkId(inputStream)) {
-            // Id does not match
-            // TODO
-        }
+    protected void read(final InputStream inputStream, final boolean parseName) throws IOException {
     }
 
     @Override

@@ -8,8 +8,8 @@ import java.nio.charset.StandardCharsets;
 
 public class TagString extends Tag<String> {
 
-    TagString(final InputStream inputStream) throws IOException {
-        super(inputStream);
+    TagString(final InputStream inputStream, final boolean parseName) throws IOException {
+        super(inputStream, parseName);
     }
 
     protected TagString(final String name, final String value) {
@@ -17,14 +17,11 @@ public class TagString extends Tag<String> {
     }
 
     @Override
-    protected void read(final InputStream inputStream) throws IOException {
-        if (!this.checkId(inputStream)) {
-            // Id does not match
-            // TODO
+    protected void read(final InputStream inputStream, final boolean parseName) throws IOException {
+        if (parseName) {
+            // Get name
+            this.name = this.readName(inputStream);
         }
-
-        // Get name
-        this.name = this.readName(inputStream);
 
         // Get length of string
         final byte[] stringLenArr = new byte[2];
