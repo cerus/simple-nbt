@@ -2,14 +2,15 @@ package de.cerus.simplenbt.tag;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
-public class TagCompound extends Tag<Tag<?>[]> {
+public class TagCompound extends Tag<List<Tag<?>>> {
 
     TagCompound(final InputStream inputStream, final boolean parseName) throws IOException {
         super(inputStream, parseName);
     }
 
-    protected TagCompound(final String name, final Tag<?>[] value) {
+    protected TagCompound(final String name, final List<Tag<?>> value) {
         super(name, value);
     }
 
