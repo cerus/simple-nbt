@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class TagCompound extends Tag<List<Tag<?>>> {
 
@@ -65,6 +67,12 @@ public class TagCompound extends Tag<List<Tag<?>>> {
                 .map(tag -> (T) tag)
                 .findAny()
                 .orElse(null);
+    }
+
+    public Set<String> nameSet() {
+        return this.value.stream()
+                .map(Tag::getName)
+                .collect(Collectors.toSet());
     }
 
     public boolean contains(final String key) {
