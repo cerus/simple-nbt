@@ -27,7 +27,7 @@ public abstract class Tag<T> {
      *
      * @throws IOException When the implementation fails to read the payload
      */
-    Tag(final InputStream inputStream, final boolean parseName) throws IOException {
+    public Tag(final InputStream inputStream, final boolean parseName) throws IOException {
         this.read(inputStream, parseName);
     }
 
