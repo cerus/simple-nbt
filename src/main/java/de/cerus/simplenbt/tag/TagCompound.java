@@ -36,7 +36,7 @@ public class TagCompound extends Tag<List<Tag<?>>> {
 
         final List<Tag<?>> list = new ArrayList<>();
         Tag<?> tag;
-        while (!((tag = TagReader.readNextTag(inputStream, true).orElse(null)) instanceof TagEnd) && tag != null) {
+        while (!((tag = TagReader.readNextTagExceptionally(inputStream, true)) instanceof TagEnd)) {
             list.add(tag);
         }
         this.value = list;
