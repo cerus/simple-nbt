@@ -1,5 +1,6 @@
 package de.cerus.simplenbt.tag;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -38,6 +39,13 @@ public class TagRegistry {
 
     public static Optional<Class<? extends Tag<?>>> findClass(final int id) {
         return Optional.ofNullable(TAG_MAP.get(id));
+    }
+
+    public static int getNextFreeId() {
+        return TAG_MAP.keySet().stream()
+                .max(Comparator.comparingInt(value -> value))
+                .orElse(12) // Highest id that's used by Minecraft
+                + 1;
     }
 
 }
