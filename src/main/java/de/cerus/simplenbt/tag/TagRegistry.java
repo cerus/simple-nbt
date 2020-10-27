@@ -27,6 +27,15 @@ public class TagRegistry {
     private TagRegistry() {
     }
 
+    public static boolean registerTag(final int id, final Class<? extends Tag<?>> tagClass) {
+        if (TAG_MAP.containsKey(id)) {
+            return false;
+        }
+
+        TAG_MAP.put(id, tagClass);
+        return true;
+    }
+
     public static Optional<Class<? extends Tag<?>>> findClass(final int id) {
         return Optional.ofNullable(TAG_MAP.get(id));
     }
