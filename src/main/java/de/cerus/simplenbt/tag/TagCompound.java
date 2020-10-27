@@ -48,7 +48,6 @@ public class TagCompound extends Tag<List<Tag<?>>> {
 
         for (final Tag<?> tag : this.value) {
             tag.write(outputStream, true);
-            System.out.println(tag.name + " was written");
         }
         new TagEnd().write(outputStream, false);
     }
