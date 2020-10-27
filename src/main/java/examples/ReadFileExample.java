@@ -22,14 +22,15 @@ public class ReadFileExample {
     }
 
     private static void print(final String before, final TagCompound tagCompound) {
-        System.out.println(before + "=== " + tagCompound.getName() + " ===");
+        System.out.println(before + "=== " + (tagCompound.getName() == null || tagCompound.getName().length() == 0
+                ? "<ROOT>" : tagCompound.getName()) + " ===");
         for (final Tag<?> tag : tagCompound.getValue()) {
             if (tag instanceof TagCompound) {
                 print(before + "    ", (TagCompound) tag);
                 continue;
             }
 
-            System.out.println(before + tag.getName() + ": " + tag.stringify());
+            System.out.println(before + " " + tag.getName() + ": " + tag.stringify());
         }
     }
 
