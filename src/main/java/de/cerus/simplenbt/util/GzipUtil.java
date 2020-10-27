@@ -39,6 +39,7 @@ public class GzipUtil {
         while ((len = inputStream.read(buffer)) != -1) {
             outputStream.write(buffer, 0, len);
         }
+        outputStream.close();
 
         return bOut.toByteArray();
     }
