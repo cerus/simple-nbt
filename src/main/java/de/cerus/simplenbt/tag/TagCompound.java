@@ -17,7 +17,11 @@ public class TagCompound extends Tag<List<Tag<?>>> {
     }
 
     public static TagCompound createRootTag() {
-        return new TagCompound("", new ArrayList<>());
+        return createTag("");
+    }
+
+    public static TagCompound createTag(final String name) {
+        return new TagCompound(name, new ArrayList<>());
     }
 
     @Override
