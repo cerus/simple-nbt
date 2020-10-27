@@ -1,6 +1,6 @@
 
 
-[![badge](https://img.shields.io/badge/jitpack.io-v1.1.1-green)](https://jitpack.io/#cerus/simple-nbt/v1.1.1)
+[![badge](https://img.shields.io/badge/jitpack.io-v1.1.2-green)](https://jitpack.io/#cerus/simple-nbt/v1.1.2)
 
 # simple-nbt
 Very simple implementation of the [NBT (Named Binary Tag)](https://minecraft.gamepedia.com/NBT_format) format.
@@ -8,6 +8,7 @@ Very simple implementation of the [NBT (Named Binary Tag)](https://minecraft.gam
 ## Features
 - Reading (un)compressed nbt
 - Writing (un)compressed nbt
+- Custom tag implementations
 
 ## Installation
 You can add simple-nbt to your project with Maven using Jitpack.io:
@@ -23,7 +24,7 @@ You can add simple-nbt to your project with Maven using Jitpack.io:
     <dependency>
         <groupId>com.github.cerus</groupId>
         <artifactId>simple-nbt</artifactId>
-        <version>v1.1.1</version>
+        <version>v1.1.2</version>
     </dependency>
 </dependencies>
 ```
