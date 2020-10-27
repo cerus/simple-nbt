@@ -49,6 +49,7 @@ public class TagLongArray extends Tag<long[]> {
         for (final long l : this.value) {
             byteBuffer.putLong(l);
         }
+        outputStream.write(byteBuffer.array());
     }
 
     @Override
@@ -60,7 +61,7 @@ public class TagLongArray extends Tag<long[]> {
 
     @Override
     public int getId() {
-        return 3;
+        return 12;
     }
 
 }

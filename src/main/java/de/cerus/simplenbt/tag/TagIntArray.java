@@ -61,7 +61,7 @@ public class TagIntArray extends Tag<int[]> {
 
     @Override
     public int getId() {
-        return 3;
+        return 11;
     }
 
 }
