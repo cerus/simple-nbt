@@ -4,9 +4,11 @@ import de.cerus.simplenbt.tag.SimpleNbtUtil;
 import de.cerus.simplenbt.tag.TagByte;
 import de.cerus.simplenbt.tag.TagCompound;
 import de.cerus.simplenbt.tag.TagInt;
+import de.cerus.simplenbt.tag.TagList;
 import de.cerus.simplenbt.tag.TagString;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class WriteFileExample {
 
@@ -20,8 +22,19 @@ public class WriteFileExample {
 
         final TagCompound nestedCompound = TagCompound.createTag("NestedCompound");
         nestedCompound.set(new TagByte("ByteTag", (byte) 1));
+        final TagCompound nestedCompound2 = TagCompound.createTag("NestedCompound2");
+        nestedCompound2.set(new TagByte("ByteTag2", (byte) 1));
+        final TagCompound nestedCompound3 = TagCompound.createTag("NestedCompound3");
+        nestedCompound3.set(new TagByte("ByteTag3", (byte) 1));
+        nestedCompound3.set(new TagList("SomeList", Arrays.asList(
+                new TagInt("", 1),
+                new TagInt("", 44),
+                new TagInt("", -456)
+        ), 3));
 
+        nestedCompound2.set(nestedCompound3);
         tagCompound.set(nestedCompound);
+        tagCompound.set(nestedCompound2);
 
         SimpleNbtUtil.writeAndCompressTag(tagCompound, file);
     }

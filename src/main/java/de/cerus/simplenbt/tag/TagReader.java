@@ -9,7 +9,10 @@ import java.util.Optional;
 public class TagReader {
 
     public static Tag<?> readNextTagExceptionally(final InputStream inputStream, final boolean parseName) throws IOException {
-        final int tagId = inputStream.read();
+        return readNextTagExceptionally(inputStream, parseName, inputStream.read());
+    }
+
+    public static Tag<?> readNextTagExceptionally(final InputStream inputStream, final boolean parseName, final int tagId) {
         final Optional<? extends Tag<?>> optional = readNextTag(inputStream, parseName, tagId);
 
         if (!optional.isPresent()) {

@@ -7,7 +7,6 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class TagList extends Tag<List<Tag<?>>> {
@@ -41,8 +40,12 @@ public class TagList extends Tag<List<Tag<?>>> {
         // Read tags
         final List<Tag<?>> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            final Optional<? extends Tag<?>> optional = TagReader.readNextTag(inputStream, false, this.tagId);
-            optional.ifPresent(list::add);
+            final Tag<?> tag = TagReader.readNextTagExceptionally(inputStream, false);
+            if (tag.getId() != this.tagId) {
+                throw new IllegalStateException("Id of list item is " + tag.getId() + " but it should be " + this.tagId);
+            }
+
+            list.add(tag);
         }
         this.value = list;
     }
@@ -51,6 +54,7 @@ public class TagList extends Tag<List<Tag<?>>> {
     protected void write(final OutputStream outputStream, final boolean withName) throws IOException {
         super.write(outputStream, withName);
 
+        outputStream.write(this.tagId);
         outputStream.write(ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN).putInt(this.value.size()).array());
         for (final Tag<?> tag : this.value) {
             tag.write(outputStream, false);
@@ -72,4 +76,5 @@ public class TagList extends Tag<List<Tag<?>>> {
     public int getTagId() {
         return this.tagId;
     }
+
 }
