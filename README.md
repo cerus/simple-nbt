@@ -31,4 +31,8 @@ You can add simple-nbt to your project with Maven using Jitpack.io:
 ```
 
 ## Usage
-Take a look at the [examples](src/main/java/examples) package.
+Take a look at the [examples](src/main/java/examples) 
+
+## References
+- [Minecraft Wiki - NBT Format](https://minecraft.gamepedia.com/NBT_format)
+- [Minecraft NBT Docs](http://web.archive.org/web/20110723210920/http://www.minecraft.net/docs/NBT.txt)
