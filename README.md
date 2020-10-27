@@ -1,6 +1,6 @@
 
 
-[![badge](https://img.shields.io/badge/jitpack.io-v1.1.3-green)](https://jitpack.io/#cerus/simple-nbt/v1.1.3)
+[![badge](https://img.shields.io/badge/jitpack.io-v1.1.3-green)](https://jitpack.io/#cerus/simple-nbt/v1.1.3) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/cerus/simple-nbt/Maven)](https://github.com/cerus/simple-nbt/actions?query=workflow%3AMaven)
 
 # simple-nbt
 Very simple implementation of the [NBT (Named Binary Tag)](https://minecraft.gamepedia.com/NBT_format) format.
