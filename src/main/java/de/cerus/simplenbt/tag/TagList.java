@@ -8,6 +8,7 @@ import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class TagList extends Tag<List<Tag<?>>> {
 
@@ -54,6 +55,13 @@ public class TagList extends Tag<List<Tag<?>>> {
         for (final Tag<?> tag : this.value) {
             tag.write(outputStream, false);
         }
+    }
+
+    @Override
+    public String stringify() {
+        return "[" + this.getValue().stream()
+                .map(Tag::stringify)
+                .collect(Collectors.joining(",")) + "]";
     }
 
     @Override

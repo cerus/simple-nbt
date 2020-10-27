@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class TagLongArray extends Tag<long[]> {
 
@@ -47,6 +49,13 @@ public class TagLongArray extends Tag<long[]> {
         for (final long l : this.value) {
             byteBuffer.putLong(l);
         }
+    }
+
+    @Override
+    public String stringify() {
+        return "[L;" + Arrays.stream(this.getValue())
+                .mapToObj(val -> val + "")
+                .collect(Collectors.joining(",")) + "]";
     }
 
     @Override

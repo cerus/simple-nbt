@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class TagByteArray extends Tag<byte[]> {
 
@@ -39,6 +41,14 @@ public class TagByteArray extends Tag<byte[]> {
         super.write(outputStream, withName);
         outputStream.write(ByteBuffer.allocate(4).putInt(this.value.length).array());
         outputStream.write(this.value);
+    }
+
+    @Override
+    public String stringify() {
+        return "[B;" + IntStream.range(0, this.getValue().length)
+                .map(i -> this.getValue()[i])
+                .mapToObj(val -> val + "")
+                .collect(Collectors.joining(",")) + "]";
     }
 
     @Override

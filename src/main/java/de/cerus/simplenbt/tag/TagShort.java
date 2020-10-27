@@ -37,6 +37,11 @@ public class TagShort extends Tag<Short> {
     }
 
     @Override
+    public String stringify() {
+        return this.getValue() + "s";
+    }
+
+    @Override
     public int getId() {
         return 2;
     }

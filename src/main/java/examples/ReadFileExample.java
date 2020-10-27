@@ -13,7 +13,9 @@ public class ReadFileExample {
 
         final File file = new File(String.join(" ", Arrays.copyOfRange(args, 1, args.length)));
         final TagCompound tagCompound = compressed ? SimpleNbtUtil.readCompressedFile(file) : SimpleNbtUtil.readFile(file);
+
         System.out.println("Read tag compound with " + tagCompound.getValue().size() + " items");
+        System.out.println(tagCompound.stringify());
     }
 
 }

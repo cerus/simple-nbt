@@ -44,6 +44,11 @@ public class TagString extends Tag<String> {
     }
 
     @Override
+    public String stringify() {
+        return "\"" + this.getValue().replace("\"", "\\\"") + "\"";
+    }
+
+    @Override
     public int getId() {
         return 8;
     }

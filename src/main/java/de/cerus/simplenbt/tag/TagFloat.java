@@ -37,6 +37,11 @@ public class TagFloat extends Tag<Float> {
     }
 
     @Override
+    public String stringify() {
+        return this.getValue() + "f";
+    }
+
+    @Override
     public int getId() {
         return 5;
     }

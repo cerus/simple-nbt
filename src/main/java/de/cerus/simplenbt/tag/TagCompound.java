@@ -80,6 +80,13 @@ public class TagCompound extends Tag<List<Tag<?>>> {
     }
 
     @Override
+    public String stringify() {
+        return "{" + this.getValue().stream()
+                .map(tag -> tag.getName() + ":" + tag.stringify())
+                .collect(Collectors.joining(",")) + "}";
+    }
+
+    @Override
     public int getId() {
         return 10;
     }

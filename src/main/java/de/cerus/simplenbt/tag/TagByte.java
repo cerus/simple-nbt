@@ -31,6 +31,11 @@ public class TagByte extends Tag<Byte> {
         outputStream.write(this.value);
     }
 
+    @Override
+    public String stringify() {
+        return this.getValue() + "b";
+    }
+
     public boolean asBoolean() {
         return this.getValue() == (byte) 1;
     }

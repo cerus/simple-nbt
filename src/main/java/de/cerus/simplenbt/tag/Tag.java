@@ -98,6 +98,10 @@ public abstract class Tag<T> {
         outputStream.write(this.name.getBytes(StandardCharsets.UTF_8));
     }
 
+    public String stringify() {
+        return "";
+    }
+
     public String getName() {
         return this.name;
     }

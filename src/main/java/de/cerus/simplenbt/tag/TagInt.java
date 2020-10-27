@@ -37,6 +37,11 @@ public class TagInt extends Tag<Integer> {
     }
 
     @Override
+    public String stringify() {
+        return String.valueOf(this.getValue());
+    }
+
+    @Override
     public int getId() {
         return 3;
     }

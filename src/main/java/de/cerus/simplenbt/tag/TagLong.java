@@ -37,6 +37,11 @@ public class TagLong extends Tag<Long> {
     }
 
     @Override
+    public String stringify() {
+        return this.getValue() + "l";
+    }
+
+    @Override
     public int getId() {
         return 4;
     }

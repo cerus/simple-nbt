@@ -9,6 +9,7 @@ Very simple implementation of the [NBT (Named Binary Tag)](https://minecraft.gam
 - Reading (un)compressed nbt
 - Writing (un)compressed nbt
 - Custom tag implementations
+- NBT -> stringified NBT (`Tag#stringify()`)
 
 ## Installation
 You can add simple-nbt to your project with Maven using Jitpack.io:

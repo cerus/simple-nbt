@@ -37,6 +37,11 @@ public class TagDouble extends Tag<Double> {
     }
 
     @Override
+    public String stringify() {
+        return this.getValue() + "d";
+    }
+
+    @Override
     public int getId() {
         return 6;
     }
