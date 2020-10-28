@@ -45,13 +45,13 @@ public class TagCompound extends Tag<List<Tag<?>>> {
     }
 
     @Override
-    protected void write(final OutputStream outputStream, final boolean withName) throws IOException {
-        super.write(outputStream, withName);
+    protected void write(final OutputStream outputStream, final boolean withName, final boolean writeId) throws IOException {
+        super.write(outputStream, withName, writeId);
 
         for (final Tag<?> tag : this.value) {
-            tag.write(outputStream, true);
+            tag.write(outputStream, true, true);
         }
-        new TagEnd().write(outputStream, false);
+        new TagEnd().write(outputStream, false, true);
     }
 
     public void set(final Tag<?> tag) {

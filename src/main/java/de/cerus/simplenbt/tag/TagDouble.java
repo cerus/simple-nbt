@@ -30,8 +30,8 @@ public class TagDouble extends Tag<Double> {
     }
 
     @Override
-    protected void write(final OutputStream outputStream, final boolean withName) throws IOException {
-        super.write(outputStream, withName);
+    protected void write(final OutputStream outputStream, final boolean withName, final boolean writeId) throws IOException {
+        super.write(outputStream, withName, writeId);
 
         outputStream.write(ByteBuffer.allocate(8).order(ByteOrder.BIG_ENDIAN).putDouble(this.value).array());
     }

@@ -40,24 +40,20 @@ public class TagList extends Tag<List<Tag<?>>> {
         // Read tags
         final List<Tag<?>> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            final Tag<?> tag = TagReader.readNextTagExceptionally(inputStream, false);
-            if (tag.getId() != this.tagId) {
-                throw new IllegalStateException("Id of list item is " + tag.getId() + " but it should be " + this.tagId);
-            }
-
+            final Tag<?> tag = TagReader.readNextTagExceptionally(inputStream, false, this.tagId);
             list.add(tag);
         }
         this.value = list;
     }
 
     @Override
-    protected void write(final OutputStream outputStream, final boolean withName) throws IOException {
-        super.write(outputStream, withName);
+    protected void write(final OutputStream outputStream, final boolean withName, final boolean writeId) throws IOException {
+        super.write(outputStream, withName, writeId);
 
         outputStream.write(this.tagId);
         outputStream.write(ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN).putInt(this.value.size()).array());
         for (final Tag<?> tag : this.value) {
-            tag.write(outputStream, false);
+            tag.write(outputStream, false, false);
         }
     }
 

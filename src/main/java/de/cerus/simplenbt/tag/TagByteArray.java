@@ -37,8 +37,8 @@ public class TagByteArray extends Tag<byte[]> {
     }
 
     @Override
-    protected void write(final OutputStream outputStream, final boolean withName) throws IOException {
-        super.write(outputStream, withName);
+    protected void write(final OutputStream outputStream, final boolean withName, final boolean writeId) throws IOException {
+        super.write(outputStream, withName, writeId);
         outputStream.write(ByteBuffer.allocate(4).putInt(this.value.length).array());
         outputStream.write(this.value);
     }

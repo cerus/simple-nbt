@@ -30,8 +30,8 @@ public class TagShort extends Tag<Short> {
     }
 
     @Override
-    protected void write(final OutputStream outputStream, final boolean withName) throws IOException {
-        super.write(outputStream, withName);
+    protected void write(final OutputStream outputStream, final boolean withName, final boolean writeId) throws IOException {
+        super.write(outputStream, withName, writeId);
 
         outputStream.write(ByteBuffer.allocate(2).order(ByteOrder.BIG_ENDIAN).putShort(this.value).array());
     }

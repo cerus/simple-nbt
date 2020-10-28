@@ -47,7 +47,7 @@ public class SimpleNbtUtil {
     }
 
     public static void writeTag(final Tag<?> tag, final OutputStream outputStream) throws IOException {
-        tag.write(outputStream, true);
+        tag.write(outputStream, true, true);
     }
 
     public static void writeTag(final Tag<?> tag, final File file) throws IOException {

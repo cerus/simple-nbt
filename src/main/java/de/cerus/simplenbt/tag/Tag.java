@@ -55,11 +55,15 @@ public abstract class Tag<T> {
      * @param outputStream The output stream that will hold the data.
      * @param withName     Whether the implementation should write the name of the tag or not. If false the
      *                     implementation should not weite the two length bytes and the string bytes.
+     * @param writeId      Whether the implementation should write the id of this tag or not. This should
+     *                     only be false in lists.
      *
      * @throws IOException When the implementation fails to write the payload
      */
-    protected void write(final OutputStream outputStream, final boolean withName) throws IOException {
-        outputStream.write(this.getId());
+    protected void write(final OutputStream outputStream, final boolean withName, final boolean writeId) throws IOException {
+        if (writeId) {
+            outputStream.write(this.getId());
+        }
         if (withName) {
             this.writeName(outputStream);
         }

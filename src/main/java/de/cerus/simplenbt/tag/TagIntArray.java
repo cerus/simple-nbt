@@ -41,8 +41,8 @@ public class TagIntArray extends Tag<int[]> {
     }
 
     @Override
-    protected void write(final OutputStream outputStream, final boolean withName) throws IOException {
-        super.write(outputStream, withName);
+    protected void write(final OutputStream outputStream, final boolean withName, final boolean writeId) throws IOException {
+        super.write(outputStream, withName, writeId);
 
         outputStream.write(ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN).putInt(this.value.length).array());
         final ByteBuffer byteBuffer = ByteBuffer.allocate(this.value.length * 4).order(ByteOrder.BIG_ENDIAN);
