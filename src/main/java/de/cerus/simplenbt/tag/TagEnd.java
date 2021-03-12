@@ -1,6 +1,5 @@
 package de.cerus.simplenbt.tag;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -14,8 +13,8 @@ public class TagEnd extends Tag<Void> {
         super(inputStream, parseName);
     }
 
-    public TagEnd() throws IOException {
-        super(new ByteArrayInputStream(new byte[0]), false);
+    public TagEnd() {
+        this(null, null);
     }
 
     TagEnd(final String name, final Void value) {

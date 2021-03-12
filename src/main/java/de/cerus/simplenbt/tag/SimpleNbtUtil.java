@@ -30,7 +30,7 @@ public class SimpleNbtUtil {
     public static TagCompound readCompound(final InputStream inputStream) throws IOException {
         final int id = inputStream.read();
         if (id != 10) {
-            throw new IllegalStateException("Invalid id");
+            throw new IllegalStateException("Invalid id " + id);
         }
 
         return new TagCompound(inputStream, true);
