@@ -9,12 +9,15 @@ import java.nio.charset.StandardCharsets;
 
 public class TagString extends Tag<String> {
 
+    private byte[] bytes;
+
     TagString(final InputStream inputStream, final boolean parseName) throws IOException {
         super(inputStream, parseName);
     }
 
     public TagString(final String name, final String value) {
         super(name, value);
+        this.bytes = value.getBytes(StandardCharsets.UTF_8);
     }
 
     @Override
@@ -33,14 +36,15 @@ public class TagString extends Tag<String> {
         final byte[] stringArr = new byte[stringLen];
         inputStream.read(stringArr, 0, stringLen);
         this.value = new String(stringArr, StandardCharsets.UTF_8);
+        this.bytes = stringArr;
     }
 
     @Override
     protected void write(final OutputStream outputStream, final boolean withName, final boolean writeId) throws IOException {
         super.write(outputStream, withName, writeId);
 
-        outputStream.write(ByteBuffer.allocate(2).order(ByteOrder.BIG_ENDIAN).putShort((short) this.value.length()).array());
-        outputStream.write(this.value.getBytes(StandardCharsets.UTF_8));
+        outputStream.write(ByteBuffer.allocate(2).order(ByteOrder.BIG_ENDIAN).putShort((short) this.bytes.length).array());
+        outputStream.write(this.bytes);
     }
 
     @Override
