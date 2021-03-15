@@ -36,7 +36,7 @@ public class WriteFileExample {
         tagCompound.set(nestedCompound);
         tagCompound.set(nestedCompound2);
 
-        SimpleNbtUtil.writeAndCompressTag(tagCompound, file);
+        SimpleNbtUtil.writeAndCompressTag(tagCompound, file, false);
     }
 
 }

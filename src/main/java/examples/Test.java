@@ -38,7 +38,7 @@ public class Test {
         System.out.println();
 
         final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        SimpleNbtUtil.writeAndCompressTag(tagCompound, byteArrayOutputStream);
+        SimpleNbtUtil.writeAndCompressTag(tagCompound, byteArrayOutputStream, false);
         System.out.println(Base64.getEncoder().encodeToString(byteArrayOutputStream.toByteArray()
         ));
     }

@@ -42,7 +42,7 @@ public class CustomTagExample {
             final TagCompound compound = TagCompound.createRootTag();
             compound.set(new CustomTag("MyCoolTag", someEnum));
 
-            SimpleNbtUtil.writeTag(compound, file);
+            SimpleNbtUtil.writeTag(compound, file, false);
         }
     }
 

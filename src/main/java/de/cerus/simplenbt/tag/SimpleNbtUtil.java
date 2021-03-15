@@ -36,22 +36,23 @@ public class SimpleNbtUtil {
         return new TagCompound(inputStream, true);
     }
 
-    public static void writeAndCompressTag(final Tag<?> tag, final OutputStream outputStream) throws IOException {
+    public static void writeAndCompressTag(final Tag<?> tag, final OutputStream outputStream, final boolean name) throws IOException {
         final ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        writeTag(tag, stream);
+        writeTag(tag, stream, name);
         outputStream.write(GzipUtil.compress(stream.toByteArray()));
+        stream.close();
     }
 
-    public static void writeAndCompressTag(final Tag<?> tag, final File file) throws IOException {
-        writeAndCompressTag(tag, new FileOutputStream(file));
+    public static void writeAndCompressTag(final Tag<?> tag, final File file, final boolean name) throws IOException {
+        writeAndCompressTag(tag, new FileOutputStream(file), name);
     }
 
-    public static void writeTag(final Tag<?> tag, final OutputStream outputStream) throws IOException {
-        tag.write(outputStream, true, true);
+    public static void writeTag(final Tag<?> tag, final OutputStream outputStream, final boolean name) throws IOException {
+        tag.write(outputStream, name, true);
     }
 
-    public static void writeTag(final Tag<?> tag, final File file) throws IOException {
-        writeTag(tag, new FileOutputStream(file));
+    public static void writeTag(final Tag<?> tag, final File file, final boolean name) throws IOException {
+        writeTag(tag, new FileOutputStream(file), name);
     }
 
 }
