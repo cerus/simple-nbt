@@ -13,6 +13,7 @@ public class TagReader {
     }
 
     public static Tag<?> readNextTagExceptionally(final InputStream inputStream, final boolean parseName, final int tagId) {
+        System.out.println("[NBT] READING " + tagId);
         final Optional<? extends Tag<?>> optional = readNextTag(inputStream, parseName, tagId);
 
         if (!optional.isPresent()) {
