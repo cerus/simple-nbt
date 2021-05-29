@@ -48,7 +48,7 @@ public class BasicNbtTest {
         final String stringifiedNbt = rootTag.stringify();
 
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
-        SimpleNbtUtil.writeTag(rootTag, out, false);
+        SimpleNbtUtil.writeTag(rootTag, out, true);
         final byte[] bytes = out.toByteArray();
 
         final TagCompound readCompound = SimpleNbtUtil.readCompound(new ByteArrayInputStream(bytes));
