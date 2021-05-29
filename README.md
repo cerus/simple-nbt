@@ -1,4 +1,4 @@
-[![badge](https://img.shields.io/badge/jitpack.io-v1.1.4-green)](https://jitpack.io/#cerus/simple-nbt/v1.1.4) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/cerus/simple-nbt/Maven)](https://github.com/cerus/simple-nbt/actions?query=workflow%3AMaven)
+![Maven Central](https://img.shields.io/maven-central/v/dev.cerus/simple-nbt) [![badge](https://img.shields.io/badge/jitpack.io-v1.1.4-green)](https://jitpack.io/#cerus/simple-nbt/v1.1.4) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/cerus/simple-nbt/Maven)](https://github.com/cerus/simple-nbt/actions?query=workflow%3AMaven)
 
 # simple-nbt
 
