@@ -1,4 +1,4 @@
-package de.cerus.simplenbt.util;
+package dev.cerus.simplenbt.util;
 
 public class StringifiedNbtUtil {
 

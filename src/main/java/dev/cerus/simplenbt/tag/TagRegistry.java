@@ -1,4 +1,4 @@
-package de.cerus.simplenbt.tag;
+package dev.cerus.simplenbt.tag;
 
 import java.util.Comparator;
 import java.util.HashMap;

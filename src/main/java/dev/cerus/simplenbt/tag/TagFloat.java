@@ -1,4 +1,4 @@
-package de.cerus.simplenbt.tag;
+package dev.cerus.simplenbt.tag;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,13 +6,13 @@ import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-public class TagInt extends Tag<Integer> {
+public class TagFloat extends Tag<Float> {
 
-    TagInt(final InputStream inputStream, final boolean parseName) throws IOException {
+    TagFloat(final InputStream inputStream, final boolean parseName) throws IOException {
         super(inputStream, parseName);
     }
 
-    public TagInt(final String name, final int value) {
+    public TagFloat(final String name, final float value) {
         super(name, value);
     }
 
@@ -26,24 +26,24 @@ public class TagInt extends Tag<Integer> {
         // Get value
         final byte[] arr = new byte[4];
         inputStream.read(arr, 0, 4);
-        this.value = ByteBuffer.wrap(arr).order(ByteOrder.BIG_ENDIAN).getInt();
+        this.value = ByteBuffer.wrap(arr).order(ByteOrder.BIG_ENDIAN).getFloat();
     }
 
     @Override
     protected void write(final OutputStream outputStream, final boolean withName, final boolean writeId) throws IOException {
         super.write(outputStream, withName, writeId);
 
-        outputStream.write(ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN).putInt(this.value).array());
+        outputStream.write(ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN).putFloat(this.value).array());
     }
 
     @Override
     public String stringify() {
-        return String.valueOf(this.getValue());
+        return this.getValue() + "f";
     }
 
     @Override
     public int getId() {
-        return 3;
+        return 5;
     }
 
 }

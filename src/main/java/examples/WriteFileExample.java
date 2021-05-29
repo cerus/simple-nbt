@@ -1,11 +1,11 @@
 package examples;
 
-import de.cerus.simplenbt.tag.SimpleNbtUtil;
-import de.cerus.simplenbt.tag.TagByte;
-import de.cerus.simplenbt.tag.TagCompound;
-import de.cerus.simplenbt.tag.TagInt;
-import de.cerus.simplenbt.tag.TagList;
-import de.cerus.simplenbt.tag.TagString;
+import dev.cerus.simplenbt.tag.SimpleNbtUtil;
+import dev.cerus.simplenbt.tag.TagByte;
+import dev.cerus.simplenbt.tag.TagCompound;
+import dev.cerus.simplenbt.tag.TagInt;
+import dev.cerus.simplenbt.tag.TagList;
+import dev.cerus.simplenbt.tag.TagString;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;

@@ -1,6 +1,6 @@
-package de.cerus.simplenbt.tag;
+package dev.cerus.simplenbt.tag;
 
-import de.cerus.simplenbt.util.GzipUtil;
+import dev.cerus.simplenbt.util.GzipUtil;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;

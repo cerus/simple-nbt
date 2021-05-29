@@ -1,6 +1,6 @@
-package de.cerus.simplenbt;
+package dev.cerus.simplenbt;
 
-import de.cerus.simplenbt.util.GzipUtil;
+import dev.cerus.simplenbt.util.GzipUtil;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import org.junit.Assert;
