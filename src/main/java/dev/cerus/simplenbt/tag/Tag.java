@@ -110,6 +110,10 @@ public abstract class Tag<T> {
         return this.name;
     }
 
+    public void setName(final String name) {
+        this.name = name;
+    }
+
     public T getValue() {
         return this.value;
     }
